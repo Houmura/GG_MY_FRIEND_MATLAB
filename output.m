@@ -34,22 +34,24 @@ switch OUTPUT
 		PROB(6,:)=P6;
 		PROB(7,:)=P7;
 
-		for i=1:7;
+		for i=1:7
 			XX=PROB(PROB(i,:)<=50);
 			PT(1,i)=length(N)-length(XX);
 		end
 
-		for i=1:7;
+		for i=1:7
 			XX=PROB(PROB(i,:)<=25);
 			PT(2,i)=length(N)-length(XX);
 		end
 
-		for i=1:7;
+		for i=1:7
 			XX=PROB(PROB(i,:)<=5);
 			PT(3,i)=length(N)-length(XX);
 		end
-		T = table(PT(:,1),PT(:,2),PT(:,3),PT(:,4),PT(:,5),PT(:,6),PT(:,7),'VariableNames',{'P1','P2','P3','P4','P5','P6','P7'})
+		T = table(PT(:,1),PT(:,2),PT(:,3),PT(:,4),PT(:,5),PT(:,6),PT(:,7),'VariableNames',{'P1','P2','P3','P4','P5','P6','P7'});
 		T.Properties.Description = '毕业概率对应建造次数';
+		T.Properties.RowNames = {'50%','75%','95%'};
+		T
 		clear PT PROB XX
 		
 	otherwise
